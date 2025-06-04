@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: sans-serif;
+    background: #e0e0e0;
+    /* color: #fff; */
+    text-align: center;
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.option label {
+    display: block;
+    text-align: left;
+}
+
+.camera-container {
+    position: relative;
+}
+
+#input-video {
+    display: none;
+}
+
+#input-video,
+#output-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 480px;
+}
+
+#output-canvas {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    background-color: transparent;
+    border-radius: 10px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Camera Filter</title>
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Camera Filter</h1>
+
+        <div class="options-container">
+            <div class="option">
+                <label for="filter-options">Choose a filter:</label>
+                <select id="filter-options">
+                    <option value="none">None</option>
+                    <option value="batman">Batman Mask</option>
+                    <option value="terrorist">Terrorist Mask</option>
+                </select>
+            </div>
+
+            <div class="option">
+                <label for="power-button">Power:</label>
+                <button id="power-button">Start Camera</button>
+            </div>
+
+            <div class="option">
+                <label for="background-options">Background:</label>
+                <select id="background-options">
+                    <option value="original">Original</option>
+                    <option value="removebg">Remove Background</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="camera-container">
+            <video id="input-video" autoplay muted playsinline></video>
+            <canvas id="output-canvas" width="640" height="480"></canvas>
+        </div>
+
+        <!-- MediaPipe CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+
+        <!-- p5.js CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+
+        <!-- Custom Script -->
+        <script src="script.js"></script>
+    </body>
+</html>
