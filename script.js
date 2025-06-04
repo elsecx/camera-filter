@@ -66,10 +66,10 @@ const render = () => {
         if (backgroundMode === "original") {
             canvasCtx.drawImage(latestSegmentationResult.image, 0, 0, canvasElement.width, canvasElement.height);
         } else {
-            canvasCtx.drawImage(latestSegmentationResult.segmentationMask, 0, 0, canvasElement.width, canvasElement.height);
-
-            canvasCtx.globalCompositeOperation = "source-in";
             canvasCtx.drawImage(latestSegmentationResult.image, 0, 0, canvasElement.width, canvasElement.height);
+            canvasCtx.globalCompositeOperation = "destination-in";
+            canvasCtx.drawImage(latestSegmentationResult.segmentationMask, 0, 0, canvasElement.width, canvasElement.height);
+            canvasCtx.globalCompositeOperation = "source-over";
 
             // Jika ingin menggunakan background custom
             // canvasCtx.globalCompositeOperation = "destination-over";
@@ -94,16 +94,13 @@ const render = () => {
                 const leftCheek = landmarks[234];
                 const rightCheek = landmarks[454];
 
-                // Hitung sudut rotasi wajah berdasarkan pipi
                 const dx = (rightCheek.x - leftCheek.x) * canvasElement.width;
                 const dy = (rightCheek.y - leftCheek.y) * canvasElement.height;
                 const angle = Math.atan2(dy, dx);
 
-                // Hitung center dari wajah
                 const centerX = ((leftCheek.x + rightCheek.x) / 2) * canvasElement.width;
                 const centerY = ((forehead.y + chin.y) / 2) * canvasElement.height;
 
-                // Hitung skala topeng berdasarkan tinggi dan lebar wajah
                 const faceWidth = Math.hypot(dx, dy) * 1.6;
                 const faceHeight = (chin.y - forehead.y) * canvasElement.height * 1.8;
 
